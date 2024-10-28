@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Profile Picture</title>
+    <link rel="stylesheet" href="/styles/uplode.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Change Profile Picture</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="profile-pic">Upload New Profile Picture</label>
+                <input type="file" id="profile-pic" name="profile-pic" accept="image/*" required>
+            </div>
+            <button type="submit">Update Profile Picture</button>
+        </form>
+    </div>
+</body>
+</html>
