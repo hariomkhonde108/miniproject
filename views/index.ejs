@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create User</title>
-    <link rel="stylesheet" href="/styles/index.css">
+    <title>Trash Reporter</title>
+    <link rel="stylesheet" href="../public/styles/index.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Create a New User</h2>
-        <form action="/register" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <header class="header">
+        <div class="logo">GreenLenz</div>
+        <nav class="nav">
+            <a href="/signin">Sign In</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="post">
+            <div class="user-info">
+                <div class="avatar">@</div>
+                <div class="username">@username</div>
             </div>
-
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+            <div class="image-container">
+                <img src="https://via.placeholder.com/500" alt="Trash Image">
             </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="comment-section">
+                <textarea placeholder="Add a comment..."></textarea>
+                <div class="due-date">
+                    <label for="date">Due Date:</label>
+                    <input type="date" id="date">
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+        </section>
+        <section class="post">
+            <div class="user-info">
+                <div class="avatar">@</div>
+                <div class="username">@username</div>
             </div>
-
-            <div class="form-group">
-                <label for="age">Age:</label>
-                <input type="text" id="age" name="age" required>
+            <div class="image-container">
+                <img src="https://via.placeholder.com/500" alt="Trash Image">
             </div>
-
-            <div class="form-group">
-               <input type="submit" value="create user">
+            <div class="comment-section">
+                <textarea placeholder="Add a comment..."></textarea>
+                <div class="due-date">
+                    <label for="date">Due Date:</label>
+                    <input type="date" id="date">
+                </div>
             </div>
-        </form>
-    </div>
+        </section>
+    </main>
 </body>
 </html>
