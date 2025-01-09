@@ -1,30 +1,34 @@
+const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
-const crypto = require('crypto');
+const app = express();
 
-// Define the uploads directory
-const uploadsDir = path.join(__dirname, 'public', 'images', 'uploads'); // Correct spelling
-
-// Ensure the uploads directory exists
-if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
-}
-
+// Set up storage engine with multer
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, uploadsDir); // Set the destination to the uploads directory
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Specify the folder to store images
     },
-    filename: function (req, file, cb) {
-        crypto.randomBytes(12, (err, name) => {
-            if (err) return cb(err); // Handle the error appropriately
-
-            const fn = name.toString("hex") + path.extname(file.originalname);
-            cb(null, fn); // Move the callback here, after fn is defined
-        });
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Give the file a unique name
     }
 });
 
 const upload = multer({ storage: storage });
 
-module.exports = upload;
+// POST route to upload photo with description
+app.post('/upload-photo', upload.single('photo'), (req, res) => {
+    if (!req.file || !req.body.description) {
+        return res.status(400).send({ message: 'No file or description uploaded' });
+    }
+
+    const uploadedFilePath = path.join('uploads', req.file.filename); // Path of the uploaded file
+    res.status(200).send({
+        message: 'Photo uploaded successfully',
+        filePath: uploadedFilePath, // Return the file path to the client
+        description: req.body.description // Return the description to the client
+    });
+});
+
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});

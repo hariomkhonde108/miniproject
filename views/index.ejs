@@ -10,14 +10,14 @@
     <header class="header">
         <div class="logo">GreenLenz</div>
         
-            <nav class="nav">
-                <a href="/signin">Sign IN</a> <!-- Route to Sign In page -->
-                <a href="/signup">Sign Up</a>  <!-- Route to Sign Up page -->
-            </nav>
-            
-        
+        <nav class="nav">
+            <a href="/signin">Sign IN</a> <!-- Route to Sign In page -->
+            <a href="/signup">Sign Up</a>  <!-- Route to Sign Up page -->
+        </nav>
     </header>
+
     <main class="container">
+        <!-- Posts and Comment Sections -->
         <section class="post">
             <div class="user-info">
                 <div class="avatar">@</div>
@@ -34,6 +34,7 @@
                 </div>
             </div>
         </section>
+        
         <section class="post">
             <div class="user-info">
                 <div class="avatar">@</div>
@@ -51,5 +52,38 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer with Plus Icon -->
+    <footer>
+        <div class="add-photo" id="addPhoto">
+            <span class="plus-icon">+</span> <!-- Plus Icon -->
+        </div>
+    </footer>
+
+    <!-- Modal for taking photo -->
+   
+  <!-- Modal for taking a photo -->
+<div id="photoModal" class="modal">
+    <div class="modal-content">
+        <button id="closeModal" class="close">×</button>
+        <!-- Input to select photo from gallery or camera -->
+        <input type="file" id="photoInput" accept="image/*" capture="camera" />
+        
+        <!-- Preview the image here -->
+        <div class="image-container"></div>
+        
+        <!-- Textarea for the user to add a description -->
+        <div class="description-container">
+            <textarea id="photoDescription" placeholder="Add a description..."></textarea>
+        </div>
+
+        <!-- Button to upload photo -->
+        <button id="uploadBtn">Upload Photo</button>
+    </div>
+</div>
+
+
+
+    <script src="../scripts/photos.js"></script>
 </body>
 </html>
